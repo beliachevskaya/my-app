@@ -1,0 +1,17 @@
+.sidenav-container {
+  height: 100%;
+  background-color: #3f51b5;
+  .menu {
+    padding-top: 50px;
+  }
+}
+
+a {
+  color: white;
+}
+
+a:hover,
+a:active {
+  color: lightgray;
+}
+

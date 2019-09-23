@@ -1,0 +1,15 @@
+<h1>Skill's level</h1>
+<mat-card>
+  <mat-form-field>
+    <input matInput placeholder="Your Name" [(ngModel)]="name" maxlength=10>
+  </mat-form-field>
+</mat-card>
+<mat-card>
+  <app-first-child [userName]="name" (isClicked)="onChanged($event)"></app-first-child>
+</mat-card>
+<mat-card>
+  <app-second-child [userName]="name"></app-second-child>
+</mat-card>
+<mat-card>
+  <app-third-child [resultFirstChild]="totalFirstChild"></app-third-child>
+</mat-card>

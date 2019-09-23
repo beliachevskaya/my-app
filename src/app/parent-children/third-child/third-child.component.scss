@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  .container-elem1 {
+    flex: 7;
+  }
+  .container-elem2 {
+    flex: 1;
+  }
+}

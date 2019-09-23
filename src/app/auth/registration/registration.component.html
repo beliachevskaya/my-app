@@ -1,0 +1,65 @@
+<mat-card>
+    <h1>Registration</h1>
+      <form
+      [formGroup]="registrationForm"
+      novalidate>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Your name"
+            formControlName="name">
+          <mat-hint>Please enter your name.</mat-hint>
+          <mat-error *ngIf="registrationForm.get('name').hasError('maxlength')">Name cannot be more than 25 characters long.</mat-error>
+          <mat-error *ngIf="registrationForm.get('name').hasError('required')">This field is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Your email or phone number"
+            formControlName="emailOrPhone">
+          <mat-hint>Please enter a valid email or phone number.</mat-hint>
+          <mat-error *ngIf="registrationForm.get('emailOrPhone').hasError('required')">This field is required.</mat-error>
+          <mat-error *ngIf="registrationForm.get('emailOrPhone').hasError('pattern')">Please enter correct information</mat-error>
+        </mat-form-field>
+        <div formGroupName="passwordGroup" class="formGroup">
+          <mat-form-field>
+            <input
+              type="password"
+              matInput
+              placeholder="Your password"
+              #pwInput
+              [type]="isPasswordHide ? 'password' : 'text'"
+              formControlName="password">
+            <mat-hint>Please enter your password, min 6 characters.</mat-hint>
+            <mat-hint align="end">{{ pwInput.value?.length }}/6</mat-hint>
+            <mat-error *ngIf="registrationForm.controls['passwordGroup'].get('password').hasError('required')">This field is required.</mat-error>
+            <mat-error *ngIf="registrationForm.controls['passwordGroup'].get('password').hasError('minlength')">Password must be at least 6 characters long.</mat-error>
+            <a mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="isPasswordHide">
+                <mat-icon>{{isPasswordHide ? "visibility_off" : "visibility"}}</mat-icon>
+            </a>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              type="password"
+              matInput
+              placeholder="Confirm password"
+              #cpwInput
+              [type]="isConfirmPasswordHide ? 'password' : 'text'"
+              formControlName="confirmPassword"
+              [errorStateMatcher]="confirmValidParentMatcher">
+            <mat-hint>Please confirm your password.</mat-hint>
+            <mat-hint align="end">{{ cpwInput.value?.length }}/6</mat-hint>
+            <!-- <mat-error *ngIf="registrationForm.controls['passwordGroup'].get('confirmPassword').hasError('required')">This field is required.</mat-error> -->
+            <mat-error>Password mismatch.</mat-error>
+            <a mat-icon-button matSuffix (click)="isConfirmPasswordHide = !isConfirmPasswordHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="isConfirmPasswordHide">
+              <mat-icon>{{isConfirmPasswordHide ? "visibility_off" : "visibility"}}</mat-icon>
+            </a>
+          </mat-form-field>
+        </div>
+        <div class="signUpButton">
+          <button type="submit" mat-raised-button color="primary" [disabled]="registrationForm.invalid" (click)="onSubmit()">SignUp</button>
+        </div>
+      </form>
+  </mat-card>

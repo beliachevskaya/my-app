@@ -1,0 +1,29 @@
+mat-card {
+  width: 350px;
+  height: 300px;
+  margin: auto;
+  margin-top: 8em;
+  form {
+    display: flex;
+    flex-flow: column nowrap;
+    mat-form-field {
+      width: 300px;
+      margin: auto;
+      margin-top: 20px;
+      mat-icon {
+        color: #8C8C8C;
+      }
+    }
+    .loginButton {
+      margin-left: auto;
+      margin-right: 25px;
+      margin-top: 30px;
+    }
+  }
+  h1 {
+    color: #3f51b5;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    margin-left: 25px;
+  }
+}
